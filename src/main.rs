@@ -62,20 +62,21 @@ fn choose_color(p: Complex64, _n: usize, _max: usize) -> image::Rgb<u8> {
 
 fn main() {
 
-    let width : usize = 1280 * 1;
-    //    let c = generate(Complex64::new(-2.,-1.), Complex::new(1.,1.), width);
-    let c = Complex64::new(-0.743643887035763,0.13182590421259918);
-    let hw = 1.5e-4;
-    let hh = hw / 1.78;
-    let c = generate(c - Complex64::new(hw, hh), c + Complex64::new(hw, hh), width);
+    let width : usize = 1280 * 2;
+    let c = generate(Complex64::new(-2.,-1.), Complex64::new(1.,1.), width);
+// The picture in the readme
+//    let c = Complex64::new(-0.743643887035763,0.13182590421259918);
+//    let hw = 1.5e-4;
+//    let hh = hw / 1.78;
+//    let c = generate(c - Complex64::new(hw, hh), c + Complex64::new(hw, hh), width);
     let height = c.len();
 
     let mut z: Vec<Vec<Complex64>> = create_empty(width, height);
 
     let mut imgbuf = image::ImageBuffer::new(width as u32, height as u32);
 
-    let first_frame = 58;
-    let max_count = 250;
+    let first_frame = 1;
+    let max_count = 100;
     let mut ctr: Vec<Vec<usize>> = create_counter(width, height);
     for n in 0..max_count {
 	for y in 0..height {
